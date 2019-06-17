@@ -45,16 +45,16 @@ jobs:
 
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
-      - run: docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG .
+      - run: docker build -t $DOCKER_ORGANIZATION/$IMAGE_NAME:$IMAGE_TAG .
 
-      - run: docker push $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG && sleep 10
+      - run: docker push $DOCKER_ORGANIZATION/$IMAGE_NAME:$IMAGE_TAG && sleep 10
 
       - store_artifacts:
           path: Dockerfile
 
   test_image:
     docker:
-      - image: $DOCKER_USERNAME/web:2.3-8-jessie
+      - image: $DOCKER_ORGANIZATION/web:2.3-8-jessie
         environment:
           <<: *image_config
 
