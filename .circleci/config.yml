@@ -4,7 +4,7 @@ image_config: &image_config
   # either as project-specific environment variables
   # or as resources in your organization's org-global Context
 
-  IMAGE_NAME: # name your image (no spaces please!)
+  IMAGE_NAME: web
 
   IMAGE_TAG: 2.3-8-stretch
 
@@ -54,7 +54,7 @@ jobs:
 
   test_image:
     docker:
-      - image: $DOCKER_USERNAME/(name of image):2.3-8-stretch
+      - image: $DOCKER_USERNAME/web:2.3-8-stretch
         environment:
           <<: *image_config
 
